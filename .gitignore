@@ -1,0 +1,5 @@
+.venv
+*.ipynb
+ica_cli_sync.py
+*.log
+__pycache__
