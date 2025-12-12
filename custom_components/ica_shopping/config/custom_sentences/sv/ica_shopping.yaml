@@ -1,0 +1,9 @@
+language: "sv"
+intents:
+  IcaAddItem:
+    data:
+      - sentences:
+          - "lägg till {item} i inköpslistan"
+          - "lägg till {item} i inköpslistan"
+          - "skriv upp {item} på inköpslistan"
+          - "lägg till {item} i shoppinglistan"
