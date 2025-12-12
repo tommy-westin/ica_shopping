@@ -54,8 +54,8 @@ async def async_setup_entry(hass, entry):
 
     keep_entity = entry.options.get("todo_entity_id", entry.data.get("todo_entity_id"))
     if not keep_entity:
-        _LOGGER.error("Ingen todo-entity vald. ICA-integrationen kan inte synka utan en källa.")
-        return False
+        _LOGGER.warning("Ingen todo-entity vald. Keep-synk inaktiveras, men ICA-sensor och services fungerar.")
+        keep_entity = None
 
     debounce_unsub = None
 
