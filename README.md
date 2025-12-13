@@ -65,7 +65,7 @@ with 'ab95586e-ffd3-4927-bfc7-85d1c5193dbb' being your list_id
 
 ## Example voice assistant
 
-Add this to configuration.yaml to create an intent to use voice assistant
+Add this to configuration.yaml to create an intent to use voice assistant. This code will override the shoppinglist build into voice assistant. 
 
 ```yaml
 intent_script:
