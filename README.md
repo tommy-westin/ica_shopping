@@ -63,40 +63,34 @@ https://apimgw-pub.ica.se/sverige/digx/shopping-list/v1/api/row/ab95586e-ffd3-49
 with 'ab95586e-ffd3-4927-bfc7-85d1c5193dbb' being your list_id
 
 
-## Example Automation (ICA Refresh)
+## Example voice assistant
 
-Since ICA does not push updates, you can refresh the list every X minutes:
+Add this to configuration.yaml to create an intent to use voice assistant
 
 ```yaml
-automation:
-  - alias: "Sync ICA List Every 10 Minutes"
-    trigger:
-      - platform: time_pattern
-        minutes: "/10"
+intent_script:
+  # Röststyrning för att lägga till i ICAs inköpslista
+  IcaAddItem:
+    action:
+      - service: ica_shopping.add_item
+        data:
+          text: >
+            {{ item | trim }}
+    speech:
+      text: "Okej, jag lade till {{ item }}."
+
+  # Röststyrning för att uppdatera inköpslistan
+  IcaRefresh:
     action:
       - service: ica_shopping.refresh
-```
+    speech:
+      text: "Jag uppdaterade inköpslistan."
 
-You can also create an automation that refreshes the list when you enter or leave a store.
-This only works for ICA stores you've added as zones in Home Assistant.
-Purchases made in other locations won't trigger any update.
-
-```yaml
-alias: Ica shopping update
-description: ""
-triggers:
-  - trigger: zone
-    entity_id: device_tracker.max
-    zone: zone.ica
-    event: leave
-  - trigger: zone
-    entity_id: device_tracker.max
-    zone: zone.ica
-    event: enter
-conditions: []
-actions:
-  - action: ica_shopping.refresh
-    data: {}
-mode: single
-
-```
+  # Override för interna shoppinglist (Home Assistant built-in)
+  HassShoppingListAddItem:
+    action:
+      - service: ica_shopping.add_item
+        data:
+          text: "{{ item | trim }}"
+    speech:
+      text: "Okej, jag lade till {{ item }} på ICA."

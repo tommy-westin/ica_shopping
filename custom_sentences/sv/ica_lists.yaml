@@ -1,0 +1,10 @@
+language: "sv"
+
+lists:
+  name:
+    values:
+      - "inköpslistan"
+      - "inköpslista"
+      - "ica"
+      - "ica inköpslista"
+      - "icas inköpslista"

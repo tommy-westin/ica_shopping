@@ -1,0 +1,29 @@
+language: "sv"
+
+lists:
+  item:
+    wildcard: true
+
+intents:
+  IcaAddItem:
+    data:
+      - sentences:
+          - "lägg till {item} i icas inköpslista"
+          - "lägg till {item} i inköpslista"
+          - "lägg till {item} på inköpslistan"
+          - "lägg till {item} i icalistan"
+          - "skriv upp {item} på Icas inköpslista"
+          - "lägg till {item} i ica"
+          - "lägg till {item} på ICA-listan"
+          - "lägg till {item} på Ica"
+
+  IcaRefresh:
+    data:
+      - sentences:
+          - "uppdatera Ica inköpslistan"
+          - "synka ica inköpslistan"
+          - "uppdatera ICA inköpslistan"
+          - "synka ICA"
+          - "uppdatera ica"
+          - "uppdatera inköpslistan"
+          - "synka inköpslistan"
